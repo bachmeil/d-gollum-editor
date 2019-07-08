@@ -69,3 +69,9 @@ localhost:8085/edit?file=readme.md
 Since there was no file of that name in the working directory, it created a new file called readme.md.
 
 4\. Type away and commit it to the repo when finished.
+
+# Screenshot
+
+Here's a screenshot of the editor as I created this file:
+
+![](screenshot.png)

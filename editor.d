@@ -6,26 +6,25 @@ enum img = import("menu.png");
 
 void app(Cgi cgi) {
 	string[string] dep;
-	dep["editor.html"] = deps[0];
-	dep["asciidoc.js"] = deps[1];
-	dep["creole.js"] = deps[2];
-	dep["custom.css"] = deps[3];
-	dep["dialog.css"] = deps[4];
-	dep["editor.css"] = deps[5];
-	dep["gollum.css"] = deps[6];
-	dep["gollum.dialog.js"] = deps[7];
-	dep["gollum.editor.js"] = deps[8];
-	dep["gollum.js"] = deps[9];
-	dep["gollum.placeholder.js"] = deps[10];
-	dep["jquery-1.7.2.min.js"] = deps[11];
-	dep["markdown.js"] = deps[12];
-	dep["mousetrap.min.js"] = deps[13];
-	dep["org.js"] = deps[14];
-	dep["pod.js"] = deps[15];
-	dep["print.css"] = deps[16];
-	dep["rdoc.js"] = deps[17];
-	dep["template.css"] = deps[18];
-	dep["textile.js"] = deps[19];
+	dep["asciidoc.js"] = deps[0];
+	dep["creole.js"] = deps[1];
+	dep["custom.css"] = deps[2];
+	dep["dialog.css"] = deps[3];
+	dep["editor.css"] = deps[4];
+	dep["gollum.css"] = deps[5];
+	dep["gollum.dialog.js"] = deps[6];
+	dep["gollum.editor.js"] = deps[7];
+	dep["gollum.js"] = deps[8];
+	dep["gollum.placeholder.js"] = deps[9];
+	dep["jquery-1.7.2.min.js"] = deps[10];
+	dep["markdown.js"] = deps[11];
+	dep["mousetrap.min.js"] = deps[12];
+	dep["org.js"] = deps[13];
+	dep["pod.js"] = deps[14];
+	dep["print.css"] = deps[15];
+	dep["rdoc.js"] = deps[16];
+	dep["template.css"] = deps[17];
+	dep["textile.js"] = deps[18];
 
   cgi.setResponseContentType("text/html");
   string path = cgi.pathInfo;
@@ -46,7 +45,9 @@ void app(Cgi cgi) {
 			break;
 		case "/view":
 			string cmd = "pandoc -s " ~ cgi.get["file"] ~ " -t html --quiet";
-			data = executeShell(cmd).output;
+			data = "You're viewing an unstyled preview of " ~ cgi.get["file"] ~ "<br><br>\n" ~ 
+				executeShell(cmd).output ~ `<br><br><a href="/edit?file=` ~
+				cgi.get["file"] ~ `">Edit</a>`;
 			break;
 		case "/icon-sprite.png":
 			data = img.to!string;

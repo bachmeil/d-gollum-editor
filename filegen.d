@@ -3,8 +3,7 @@ import std.file, std.path;
 void main() {
 	string result;
 	foreach(f; 
-	["editor.html",
-	 "asciidoc.js",
+	["asciidoc.js",
 	 "creole.js",
 	 "custom.css",
 	 "dialog.css",
